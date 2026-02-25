@@ -1,109 +1,14 @@
-# 🏥 Healthcare Performance Dashboard
+# 🏥 Healthcare Operations Performance Analysis
 
-> An AI-powered analytics platform for private clinics and hospitals — built with No-Code tools.
+> Executive Analytics Portfolio Project — Generative AI Data Analyst Program
 
 ---
 
 ## 📌 Overview
 
-The **Healthcare Performance Dashboard** is an all-in-one analytics solution that gives clinic and hospital managers a real-time, centralized view of their key performance indicators (KPIs). It features an intelligent alert system and automated weekly AI-generated reports in Arabic, designed specifically for healthcare management teams.
+This project analyzes **healthcare operational performance** using data analytics techniques to identify efficiency patterns, operational bottlenecks, and improvement opportunities. The analysis focuses on patient flow metrics — including **waiting time**, **length of stay (LOS)**, and **referral delays** — across multiple clinical departments.
 
----
-
-## 🎯 Problem Statement
-
-Healthcare facilities often struggle with scattered data across multiple systems, making it difficult for managers to make fast, informed decisions. This solution consolidates everything into a single, smart interface.
-
----
-
-## ✨ Key Features
-
-| Feature | Description |
-|---|---|
-| 📊 **Centralized KPI Dashboard** | All key metrics in one clean interface |
-| 🤖 **AI-Automated Reports** | Weekly Arabic reports generated via ChatGPT API |
-| 🔔 **Smart Alerts** | Instant notifications when metrics cross critical thresholds |
-| 📈 **Doctor Performance Tracking** | Monitor productivity and patient ratings per doctor |
-| 😊 **Patient Satisfaction** | Track patient experience scores over time |
-| 💰 **Revenue Analytics** | Monitor financial performance and revenue streams |
-| ❌ **Appointment Cancellations** | Analyze cancellation and no-show rates |
-
----
-
-## 🛠️ Tech Stack
-
-```
-📦 No-Code Stack
-├── 🎨 Frontend    → Bolt.new / Lovable   (UI & Dashboard)
-├── ⚙️  Backend    → Bubble               (App logic & database)
-├── 🔄 Automation  → Make (Integromat)    (Workflows & integrations)
-├── 🤖 AI Engine   → ChatGPT API          (Report generation)
-└── 📊 Data        → Airtable / Google Sheets
-```
-
----
-
-## 📐 Solution Architecture
-
-```
-[Clinic Data Sources]
-        ↓
-[Make Automation Workflows]
-        ↓
-[ChatGPT API] ──→ [Automated Arabic Weekly Report]
-        ↓
-[Performance Dashboard] ──→ [Real-time Alerts to Manager]
-```
-
----
-
-## 🚀 Getting Started
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Moha-111/HEALTHCARE-DATA-.git
-   ```
-
-2. **Open the dashboard in your browser:**
-   ```
-   index.html
-   ```
-
-3. **Connect Make Automation:**
-   - Add your ChatGPT API key in Make settings
-   - Activate the weekly report Scenario
-
-4. **Update your clinic settings:**
-   ```
-   config/clinic-settings.json
-   ```
-
----
-
-## 📊 Tracked KPIs
-
-- **Appointment Cancellation Rate**
-- **Patient Satisfaction Score**
-- **Daily / Weekly Revenue**
-- **Doctor Performance Index**
-- **Average Patient Wait Time**
-- **Bed / Room Occupancy Rate**
-
----
-
-## 📸 Screenshots
-
-> *(Add dashboard screenshots here)*
-
----
-
-## 🗺️ Roadmap
-
-- [x] Initial dashboard prototype
-- [x] Automated AI weekly reports in Arabic
-- [ ] Mobile app for managers
-- [ ] Integration with HIS systems
-- [ ] AI-powered predictive analytics
+A synthetic dataset of **5,000 patient visits** was used to simulate real-world healthcare operations. Tools included Microsoft Excel, pivot analysis, dashboard visualization, and AI-assisted insights generation.
 
 ---
 
@@ -111,7 +16,94 @@ Healthcare facilities often struggle with scattered data across multiple systems
 
 | Name | Role |
 |---|---|
-| **Mohammad** | Prepare Data For Exploration |
+| **Mohammad Alshehri** | Prepare Data For Exploration |
+
+**Program:** Generative AI Data Analyst — Vanderbilt University  
+**Field:** Healthcare Data Analytics & AI  
+**Year:** 2026
+
+---
+
+## 🛠️ Tools & Technologies
+
+| Tool | Purpose |
+|---|---|
+| **Microsoft Excel** | Data cleaning, KPI calculation, pivot analysis |
+| **Excel Dashboard** | Interactive visualization of KPIs |
+| **Pivot Tables** | Department & monthly trend analysis |
+| **AI (ChatGPT)** | Assisted interpretation of analytical findings |
+
+---
+
+## 📊 Key Performance Indicators (KPIs)
+
+| KPI | Value |
+|---|---|
+| ⏱️ Average Wait Time | **40.04 minutes** |
+| 🛏️ Average Length of Stay (LOS) | **181.10 minutes** |
+| 👥 Total Patient Visits | **5,000** |
+| 📋 Average Referral Delay | **4.51 days** |
+
+---
+
+## 🔬 Methodology
+
+The project followed a structured analytical workflow:
+
+1. **Data Cleaning & Preparation** — Using Excel formulas to ensure data quality
+2. **KPI Calculation** — Creating calculated performance indicators
+3. **Department-Level Analysis** — Comparative analysis across ED, IM, OBGYN, OPD, PED, SURG
+4. **Monthly Trend Analysis** — Tracking operational metrics across all 12 months of 2025
+5. **Dashboard Visualization** — Executive-level interactive dashboard
+6. **AI-Assisted Interpretation** — Using AI to surface actionable insights
+
+---
+
+## 📈 Key Findings
+
+### Waiting Time
+The overall average wait time was ~40 minutes, with small variation across departments — suggesting a **balanced patient intake process** without significant congestion at triage or registration.
+
+### Length of Stay (LOS)
+At ~181 minutes, LOS is significantly higher than wait time, indicating that **primary throughput delays occur within internal clinical processes** rather than at access points.
+
+### Referral Delay
+The average referral delay of ~4.5 days may contribute to prolonged patient management cycles and operational inefficiencies, affecting both outcomes and resource utilization.
+
+### Department Comparison
+Performance differences across departments were moderate with no single department showing extreme inefficiencies — suggesting **systemic rather than department-specific** challenges.
+
+### Monthly Trends
+Moderate fluctuations in wait time were observed through 2025, while LOS remained stable — indicating **consistent performance with minor seasonal variation**.
+
+---
+
+## 📸 Screenshots
+
+**Dashboard Overview**
+
+![Healthcare Operations Dashboard](screenshots/dashboard.png)
+
+**Monthly Performance Trends**
+
+![Monthly Trend Analysis](screenshots/trend_pivot.png)
+
+---
+
+## 💡 Recommendations
+
+1. **Optimize Internal Clinical Processes** — Reduce LOS by improving diagnostic turnaround and care coordination workflows
+2. **Enhance Referral Management** — Implement structured referral tracking to reduce delays and improve care continuity
+3. **Deploy Real-Time KPI Monitoring** — Use live dashboards for proactive operational decision-making
+4. **Leverage AI for Predictive Planning** — Forecast patient demand, resource utilization, and potential bottlenecks
+
+---
+
+## ✅ Conclusion
+
+This project demonstrates how **data analytics combined with AI-assisted interpretation** can support healthcare operational decision-making. While patient access processes appear efficient, improvement opportunities exist within internal care workflows and referral coordination.
+
+The developed dashboard provides a **scalable framework** adaptable to real healthcare environments to improve efficiency, resource allocation, and patient experience.
 
 ---
 
