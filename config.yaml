@@ -1,0 +1,274 @@
+# Healthcare Analytics Automation Configuration
+# YAML-based configuration for scheduled jobs and settings
+
+application:
+  name: Healthcare Analytics Platform
+  version: 3.0.0
+  environment: development  # production, staging, development
+  
+scheduler:
+  timezone: UTC
+  worker_threads: 5
+  job_store: memory  # memory, database
+  misfire_grace_time: 600  # seconds
+
+paths:
+  data_source: ./data/healthcare_data.csv
+  data_output: ./data/processed/
+  reports: ./reports/
+  archive: ./reports/archive/
+  logs: ./logs/
+  database: ./data/healthcare_analytics.db
+
+database:
+  type: sqlite
+  connection_string: sqlite:///./data/healthcare_analytics.db
+  echo_sql: false
+  pool_size: 10
+  max_overflow: 20
+
+jobs:
+  # Daily ETL Job
+  etl_daily:
+    enabled: true
+    description: "Daily data extraction and transformation"
+    schedule:
+      type: cron
+      hour: 2
+      minute: 0
+      day_of_week: '*'  # Daily
+    parameters:
+      data_source: ${DATA_SOURCE_PATH}
+      output_path: ${DATA_OUTPUT_PATH}
+      validate: true
+      backup_before_load: true
+    retry:
+      enabled: true
+      max_attempts: 3
+      backoff_seconds: 300
+    timeout_seconds: 3600
+    executor: threadpool
+
+  # Weekly Report Generation
+  weekly_report:
+    enabled: true
+    description: "Weekly analytics report"
+    schedule:
+      type: cron
+      hour: 8
+      minute: 0
+      day_of_week: 'mon'  # Monday
+    parameters:
+      report_title: "Weekly Healthcare Analytics Report"
+      output_format: [html, pdf, csv]
+      include_charts: true
+      recipients: []  # Empty = no email
+    timeout_seconds: 1800
+    executor: threadpool
+
+  # Monthly Financial Report
+  monthly_financial:
+    enabled: true
+    description: "Monthly financial summary and analysis"
+    schedule:
+      type: cron
+      hour: 9
+      minute: 0
+      day: 1  # 1st of month
+    parameters:
+      report_title: "Monthly Financial Report"
+      analysis_depth: detailed
+      include_forecasts: true
+      recipients: [finance@hospital.com]
+    timeout_seconds: 1800
+    executor: threadpool
+
+  # Model Retraining
+  model_retrain:
+    enabled: true
+    description: "Retrain ML models with latest data"
+    schedule:
+      type: cron
+      hour: 3
+      minute: 0
+      day_of_week: 'sun'  # Sunday
+    parameters:
+      models:
+        - wait_time_forecaster
+        - los_forecaster
+        - referral_delay_predictor
+        - patient_demand_forecaster
+        - seasonality_analyzer
+      test_split: 0.2
+      cross_validation_folds: 5
+      save_models: true
+    timeout_seconds: 3600
+    executor: processpool
+
+  # Quality Metrics Check
+  quality_check:
+    enabled: true
+    description: "Daily quality metrics and alerts"
+    schedule:
+      type: cron
+      hour: 10
+      minute: 0
+      day_of_week: '*'  # Daily
+    parameters:
+      metrics:
+        - readmission_rate
+        - adverse_events
+        - mortality_rate
+        - patient_satisfaction
+      alert_on_breach: true
+    timeout_seconds: 900
+    executor: threadpool
+
+  # Data Validation
+  data_validation:
+    enabled: true
+    description: "Data quality validation"
+    schedule:
+      type: cron
+      hour: 1
+      minute: 30
+      day_of_week: '*'  # Daily
+    parameters:
+      min_completeness_pct: 95
+      validate_ranges: true
+      validate_categories: true
+      generate_report: true
+    timeout_seconds: 600
+    executor: threadpool
+
+  # Financial Analysis
+  financial_analysis:
+    enabled: true
+    description: "Daily financial metrics and profitability"
+    schedule:
+      type: cron
+      hour: 6
+      minute: 0
+      day_of_week: '*'  # Daily
+    parameters:
+      include_cost_breakdown: true
+      include_department_analysis: true
+      calculate_roi: true
+    timeout_seconds: 1200
+    executor: threadpool
+
+quality_thresholds:
+  readmission_rate_pct: 8.0
+  adverse_event_rate_pct: 2.0
+  mortality_rate_pct: 1.0
+  patient_satisfaction_min: 8.0
+  wait_time_max_min: 30
+  los_max_min: 240
+
+alerts:
+  enabled: true
+  levels:
+    critical:
+      threshold_severity: 80
+      escalation_enabled: true
+      escalation_minutes: 30
+    warning:
+      threshold_severity: 50
+      escalation_enabled: false
+    info:
+      threshold_severity: 20
+      escalation_enabled: false
+  
+  channels:
+    email:
+      enabled: true
+      smtp_server: smtp.gmail.com
+      smtp_port: 587
+      sender: analytics@hospital.com
+      recipients: [admin@hospital.com]
+      tls_enabled: true
+    
+    log:
+      enabled: true
+      level: WARNING
+
+reporting:
+  default_format: html
+  supported_formats: [html, pdf, csv, json]
+  
+  email_distribution:
+    enabled: true
+    recipients:
+      daily:
+        - operations@hospital.com
+      weekly:
+        - management@hospital.com
+        - operations@hospital.com
+      monthly:
+        - cfo@hospital.com
+        - ceo@hospital.com
+  
+  retention:
+    days: 90
+    archive_old_reports: true
+  
+  templates:
+    html:
+      theme: professional
+      include_charts: true
+      include_tables: true
+    pdf:
+      page_size: A4
+      orientation: portrait
+    csv:
+      delimiter: ','
+      include_metadata: true
+
+data_validation:
+  completeness_threshold_pct: 95
+  duplicate_detection: true
+  outlier_detection: true
+  temporal_consistency_check: true
+  
+  required_columns:
+    - visit_date
+    - patient_id
+    - department
+    - wait_time_minutes
+    - los_minutes
+    - patient_satisfaction
+
+logging:
+  level: INFO
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  file: ./logs/automation.log
+  max_size_mb: 50
+  backup_count: 10
+  
+  handlers:
+    file:
+      enabled: true
+      level: INFO
+    console:
+      enabled: true
+      level: WARNING
+
+performance:
+  caching:
+    enabled: true
+    backend: memory  # memory, redis
+    ttl_seconds: 86400  # 24 hours
+  
+  parallel_processing:
+    enabled: true
+    max_workers: 5
+  
+  batch_processing:
+    enabled: true
+    batch_size: 1000
+
+development:
+  debug_mode: false
+  dry_run_mode: false
+  verbose_logging: false
+  profile_performance: false
