@@ -75,7 +75,6 @@ The project followed a structured analytical workflow:
 6. **AI-Assisted Interpretation** — Using AI to surface actionable insights
 
 ---
-sql_output.png
 ## SQL Analytics Layer
 
 To strengthen the analytical depth of the project, SQL was used as a structured querying layer to calculate and compare key operational performance indicators across departments.
