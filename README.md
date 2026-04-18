@@ -77,7 +77,7 @@ The project followed a structured analytical workflow:
 ---
 ## SQL Analytics Layer
 
-To strengthen the analytical depth of the project, SQL was used as a structured querying layer to calculate and compare key operational performance indicators across departments.
+To strengthen the analytical depth of the project, SQL was used to calculate and compare key operational performance indicators across departments.
 
 This layer supported:
 - KPI aggregation
@@ -86,9 +86,10 @@ This layer supported:
 - trend-oriented analysis for decision support
 
 ### Sample SQL Output
+
 ![SQL Output](screenshots/sql_output.png)
 
-In the sample output, departments were compared using:
+The query above compares departments using:
 - total visits
 - average wait time
 - average LOS
