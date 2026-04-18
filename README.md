@@ -75,7 +75,27 @@ The project followed a structured analytical workflow:
 6. **AI-Assisted Interpretation** — Using AI to surface actionable insights
 
 ---
+sql_output.png
+## SQL Analytics Layer
 
+To strengthen the analytical depth of the project, SQL was used as a structured querying layer to calculate and compare key operational performance indicators across departments.
+
+This layer supported:
+- KPI aggregation
+- department-level performance comparison
+- operational bottleneck identification
+- trend-oriented analysis for decision support
+
+### Sample SQL Output
+![SQL Output](screenshots/sql_output.png)
+
+In the sample output, departments were compared using:
+- total visits
+- average wait time
+- average LOS
+- average referral delay
+
+This step demonstrates how raw healthcare visit data can be transformed into actionable operational insights using SQL.
 ## 📈 Key Findings
 
 ### Waiting Time
