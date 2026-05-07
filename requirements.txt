@@ -5,7 +5,7 @@ matplotlib==3.8.2
 seaborn==0.13.0
 plotly==5.17.0
 sqlalchemy==2.0.23
-openpyxl==3.11.0
+openpyxl==3.1.5
 jupyter==1.0.0
 jupyter-notebook==7.0.6
 ipython==8.18.1
