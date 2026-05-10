@@ -55,6 +55,9 @@ output/
 *.html
 *.png
 *.jpg
+!screenshots/
+!screenshots/*.png
+!screenshots/*.jpg
 
 # Logs
 *.log

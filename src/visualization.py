@@ -130,21 +130,29 @@ class StatisticalAnalysis:
     def anomaly_detection(df: pd.DataFrame, metric: str, threshold: float = 3.0):
         """Detect outliers using Z-score"""
         from scipy import stats
-        z_scores = np.abs(stats.zscore(df[metric].dropna()))
-        anomalies = df[z_scores > threshold]
+        series = df[metric].dropna()
+        if series.empty:
+            return df.iloc[0:0].copy(), pd.Series(dtype=float, name=f'{metric}_z_score')
+
+        z_scores = pd.Series(
+            np.abs(stats.zscore(series, nan_policy='omit')),
+            index=series.index,
+            name=f'{metric}_z_score'
+        )
+        anomalies = df.loc[z_scores[z_scores > threshold].index]
         return anomalies, z_scores
     
     @staticmethod
     def forecasting(df: pd.DataFrame, metric: str, periods: int = 30):
         """Simple exponential smoothing forecast"""
-        from scipy.optimize import minimize
-        
         if 'visit_date' not in df.columns:
             return None
         
         df = df.copy()
         df['visit_date'] = pd.to_datetime(df['visit_date'])
         daily_series = df.groupby(df['visit_date'].dt.date)[metric].mean()
+        if daily_series.empty:
+            return pd.Series(dtype=float)
         
         # Exponential smoothing
         alpha = 0.3

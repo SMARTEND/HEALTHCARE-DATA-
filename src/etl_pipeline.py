@@ -24,11 +24,21 @@ class DataValidator:
         """
         if required_cols is None:
             required_cols = df.columns.tolist()
+
+        missing_cols = [col for col in required_cols if col not in df.columns]
+        if missing_cols:
+            raise ValueError(f"Required columns not found: {', '.join(missing_cols)}")
+
+        missing_by_column = df[required_cols].isnull().sum().to_dict()
+        total_cells = len(df) * len(required_cols)
+        completeness_pct = 100.0 if total_cells == 0 else 100 * (
+            1 - sum(missing_by_column.values()) / total_cells
+        )
         
         validation_results = {
             'total_records': len(df),
-            'missing_by_column': df[required_cols].isnull().sum().to_dict(),
-            'completeness_pct': 100 * (1 - df[required_cols].isnull().sum().sum() / (len(df) * len(required_cols)))
+            'missing_by_column': missing_by_column,
+            'completeness_pct': completeness_pct
         }
         
         return validation_results
@@ -164,6 +174,7 @@ class DataTransformer:
         Add derived/calculated fields
         """
         df = df.copy()
+        original_column_count = len(df.columns)
         
         # Time-based features
         if 'visit_date' in df.columns:
@@ -192,7 +203,7 @@ class DataTransformer:
             df['cost_per_visit'] = df['total_cost']
             df['revenue_per_visit'] = df['revenue']
         
-        logger.info(f"Added {len(df.columns) - 9} calculated fields")
+        logger.info(f"Added {len(df.columns) - original_column_count} calculated fields")
         
         return df
     

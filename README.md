@@ -1,5 +1,7 @@
 # 🏥 Healthcare Operations Performance Analysis
 
+[![Python package](https://github.com/SMARTEND/HEALTHCARE-DATA-/actions/workflows/python-package.yml/badge.svg)](https://github.com/SMARTEND/HEALTHCARE-DATA-/actions/workflows/python-package.yml)
+
 > Executive Analytics Portfolio Project — Generative AI Data Analyst Program
 
 ---
@@ -37,9 +39,10 @@ A synthetic dataset of **5,000 patient visits** was used to simulate real-world 
 ### Enhanced Technical Stack ✨
 | Technology | Version | Purpose |
 |---|---|---|
-| **Python** | 3.8+ | Advanced data analysis & automation |
+| **Python** | 3.9-3.11 | Advanced data analysis & automation |
 | **Pandas** | 2.1.3 | Data manipulation & transformation |
 | **NumPy** | 1.24.3 | Numerical computing & statistics |
+| **SciPy** | 1.11.4 | Statistical tests, anomaly scoring, forecasting helpers |
 | **Scikit-learn** | 1.3.2 | Machine learning & anomaly detection |
 | **Plotly** | 5.17.0 | Interactive web-based visualizations |
 | **Matplotlib/Seaborn** | 3.8.2/0.13.0 | Statistical plots & distributions |
@@ -56,10 +59,12 @@ A synthetic dataset of **5,000 patient visits** was used to simulate real-world 
 
 | KPI | Value |
 |---|---|
-| ⏱️ Average Wait Time | **40.04 minutes** |
-| 🛏️ Average Length of Stay (LOS) | **181.10 minutes** |
+| ⏱️ Average Wait Time | **39.32 minutes** |
+| 🛏️ Average Length of Stay (LOS) | **181.84 minutes** |
 | 👥 Total Patient Visits | **5,000** |
-| 📋 Average Referral Delay | **4.51 days** |
+| 📋 Average Referral Delay | **4.10 days** |
+
+These KPI values are calculated from the tracked synthetic dataset in `data/patient_visits.csv`, generated with the fixed seed in `src/generate_data.py`.
 
 ---
 
@@ -75,6 +80,7 @@ The project followed a structured analytical workflow:
 6. **AI-Assisted Interpretation** — Using AI to surface actionable insights
 
 ---
+
 ## SQL Analytics Layer
 
 To strengthen the analytical depth of the project, SQL was used to calculate and compare key operational performance indicators across departments.
@@ -96,16 +102,17 @@ The query above compares departments using:
 - average referral delay
 
 This step demonstrates how raw healthcare visit data can be transformed into actionable operational insights using SQL.
+
 ## 📈 Key Findings
 
 ### Waiting Time
-The overall average wait time was ~40 minutes, with small variation across departments — suggesting a **balanced patient intake process** without significant congestion at triage or registration.
+The overall average wait time was ~39 minutes, with small variation across departments — suggesting a **balanced patient intake process** without significant congestion at triage or registration.
 
 ### Length of Stay (LOS)
 At ~181 minutes, LOS is significantly higher than wait time, indicating that **primary throughput delays occur within internal clinical processes** rather than at access points.
 
 ### Referral Delay
-The average referral delay of ~4.5 days may contribute to prolonged patient management cycles and operational inefficiencies, affecting both outcomes and resource utilization.
+The average referral delay of ~4.1 days may contribute to prolonged patient management cycles and operational inefficiencies, affecting both outcomes and resource utilization.
 
 ### Department Comparison
 Performance differences across departments were moderate with no single department showing extreme inefficiencies — suggesting **systemic rather than department-specific** challenges.
@@ -116,6 +123,8 @@ Moderate fluctuations in wait time were observed through 2025, while LOS remaine
 ---
 
 ## 📸 Screenshots
+
+All README screenshots are stored in `screenshots/` so image links render consistently from a fresh clone.
 
 **Dashboard Overview**
 
@@ -150,15 +159,23 @@ Moderate fluctuations in wait time were observed through 2025, while LOS remaine
    
    # Install dependencies
    pip install -r requirements.txt
+
+   # Optional developer tools for tests and linting
+   pip install -r requirements-dev.txt
    ```
 
-2. **Generate Sample Data & Run Analysis:**
+2. **Generate or Refresh Sample Data:**
+   ```bash
+   python src/generate_data.py
+   ```
+
+3. **Run Basic Statistical Analysis:**
    ```bash
    # Basic statistical analysis
    python example_analysis.py
    ```
 
-3. **Run Machine Learning Pipeline:**
+4. **Run Machine Learning Pipeline:**
    ```bash
    # Train predictive models
    python ml_pipeline_example.py
@@ -167,13 +184,13 @@ Moderate fluctuations in wait time were observed through 2025, while LOS remaine
    python ml_use_cases.py
    ```
 
-4. **Comprehensive Financial & Clinical Analysis:**
+5. **Comprehensive Financial & Clinical Analysis:**
    ```bash
    # Run expanded analytics with all metrics
    python expanded_analytics_example.py
    ```
 
-5. **Automated Reporting & Scheduling:**
+6. **Automated Reporting & Scheduling:**
    ```bash
    # Run complete automation example
    python automation_example.py
@@ -186,7 +203,13 @@ Moderate fluctuations in wait time were observed through 2025, while LOS remaine
    - Job scheduling configuration
    - Report scheduling setup
 
-6. **Explore with Jupyter:**
+7. **Run Quality Checks:**
+   ```bash
+   python -m compileall -q .
+   python -m pytest -q
+   ```
+
+8. **Explore with Jupyter:**
    ```bash
    jupyter notebook
    ```
@@ -208,7 +231,18 @@ sql/
 └── schema.sql               # Expanded database schema
 
 data/
-└── patient_visits.csv       # Sample dataset
+└── patient_visits.csv       # Deterministic synthetic sample dataset
+
+screenshots/
+├── appointment_status_distribution.png # Appointment status chart
+├── dashboard.png            # Dashboard overview screenshot
+├── department_comparison.png # Department comparison chart
+├── trend_pivot.png          # Monthly trend screenshot
+└── sql_output.png           # SQL analytics output screenshot
+
+tests/
+├── conftest.py              # Test import path setup
+└── test_analytics_pipeline.py # Data generation, KPI, and ETL tests
 
 docs/
 ├── TECHNICAL_GUIDE.md       # Technical documentation
@@ -218,6 +252,8 @@ docs/
 
 .env.example                 # Environment variable template (NEW!)
 config.yaml                  # Job & automation configuration (NEW!)
+requirements.txt            # Python dependencies
+requirements-dev.txt        # Test and lint dependencies
 example_analysis.py          # Statistics & visualization demo
 ml_pipeline_example.py       # ML models & predictions demo
 ml_use_cases.py              # Real-world ML scenarios
@@ -280,10 +316,16 @@ automation_example.py        # Complete automation workflow demo (NEW!)
 - Execution history tracking & monitoring
 
 ✅ **Expanded Data Dictionary**
-- 50+ data fields covering operations, finance, and clinical metrics
+- 36 data fields covering operations, finance, and clinical metrics
 - Realistic distributions and relationships
 - Risk scoring algorithms
 - Quality indicators framework
+
+✅ **Repository Quality & Reproducibility**
+- Tracked deterministic synthetic dataset
+- CI workflow for Python 3.9, 3.10, and 3.11
+- Focused pytest coverage for data generation, KPI calculations, and ETL checks
+- README image paths aligned with tracked screenshot assets
 
 ✅ **Database Integration**
 - SQL schema for persistent storage

@@ -15,8 +15,11 @@ HEALTHCARE-DATA-/
 │   └── schema.sql               # SQL DDL for healthcare database
 ├── data/                         # Data storage
 │   └── patient_visits.csv       # Sample dataset
+├── screenshots/                   # README image assets
+├── tests/                         # Pytest coverage for core workflows
 ├── reports/                      # Generated reports
 ├── requirements.txt              # Python dependencies
+├── requirements-dev.txt          # Test and lint dependencies
 ├── example_analysis.py           # Example usage script
 └── README.md                     # Project documentation
 ```
@@ -24,6 +27,8 @@ HEALTHCARE-DATA-/
 ## Quick Start Guide
 
 ### 1. Setup Python Environment
+
+Use Python 3.9, 3.10, or 3.11 to match the CI test matrix.
 
 ```bash
 # Create virtual environment
@@ -34,6 +39,9 @@ python -m venv .venv
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Optional developer dependencies
+pip install -r requirements-dev.txt
 ```
 
 ### 2. Generate Sample Data
@@ -370,12 +378,22 @@ The analytics calculate:
 |---------|---------|---------|
 | pandas | 2.1.3 | Data manipulation |
 | numpy | 1.24.3 | Numerical computing |
+| scipy | 1.11.4 | Statistical tests and forecasting helpers |
 | scikit-learn | 1.3.2 | Machine learning |
 | matplotlib | 3.8.2 | Static visualizations |
 | seaborn | 0.13.0 | Statistical graphics |
 | plotly | 5.17.0 | Interactive charts |
 | sqlalchemy | 2.0.23 | Database ORM |
 | jupyter | 1.0.0 | Interactive notebooks |
+
+## Quality Checks
+
+Run the same lightweight checks used during development:
+
+```bash
+python -m compileall -q .
+python -m pytest -q
+```
 
 ## Future Enhancements
 

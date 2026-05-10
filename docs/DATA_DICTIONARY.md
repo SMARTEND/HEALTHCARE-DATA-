@@ -4,7 +4,7 @@ Complete reference to all data fields and metrics in the Healthcare Analytics sy
 
 ## Overview
 
-The expanded dataset includes operational, financial, clinical quality, and patient safety metrics across 5,000+ patient visits.
+The tracked CSV dataset includes 36 operational, financial, clinical quality, and patient safety fields across 5,000 synthetic patient visits. The SQL schema supports additional optional timestamp and workflow fields for database-backed implementations.
 
 ## Patient Operational Metrics
 
@@ -24,11 +24,11 @@ The expanded dataset includes operational, financial, clinical quality, and pati
 | `wait_time_minutes` | Integer | Time from registration to clinical start | Minutes | 5-120 |
 | `los_minutes` | Integer | Length of stay (clinical start to end) | Minutes | 30-480 |
 | `referral_delay_days` | Integer | Days between referral and visit | Days | 0-20 |
-| `registration_time` | DateTime | Patient registration timestamp | - | - |
-| `triage_start_time` | DateTime | Triage assessment start | - | - |
-| `triage_end_time` | DateTime | Triage assessment end | - | - |
-| `clinical_start_time` | DateTime | Clinical care start | - | - |
-| `clinical_end_time` | DateTime | Clinical care end | - | - |
+| `registration_time` | DateTime | Patient registration timestamp | SQL schema optional | - |
+| `triage_start_time` | DateTime | Triage assessment start | SQL schema optional | - |
+| `triage_end_time` | DateTime | Triage assessment end | SQL schema optional | - |
+| `clinical_start_time` | DateTime | Clinical care start | SQL schema optional | - |
+| `clinical_end_time` | DateTime | Clinical care end | SQL schema optional | - |
 
 ## Clinical Metrics
 
@@ -140,9 +140,9 @@ The expanded dataset includes operational, financial, clinical quality, and pati
 ### Access & Efficiency
 | KPI | Formula | Target | Current |
 |-----|---------|--------|---------|
-| Avg Wait Time | AVG(wait_time_minutes) | <30 min | ~40 min |
-| Avg Length of Stay | AVG(los_minutes) | <180 min | ~181 min |
-| Avg Referral Delay | AVG(referral_delay_days) | <3 days | ~4.5 days |
+| Avg Wait Time | AVG(wait_time_minutes) | <30 min | ~39.3 min |
+| Avg Length of Stay | AVG(los_minutes) | <180 min | ~181.8 min |
+| Avg Referral Delay | AVG(referral_delay_days) | <3 days | ~4.1 days |
 
 ### Quality & Safety
 | KPI | Formula | Target | Current |
@@ -154,8 +154,8 @@ The expanded dataset includes operational, financial, clinical quality, and pati
 ### Patient Experience
 | KPI | Formula | Target | Current |
 |-----|---------|--------|---------|
-| Avg Satisfaction | AVG(patient_satisfaction) | >8/10 | ~7.5/10 |
-| Very Satisfied % | SUM(satisfaction >= 8) / COUNT | >70% | ~65% |
+| Avg Satisfaction | AVG(patient_satisfaction) | >8/10 | ~7.2/10 |
+| Very Satisfied % | SUM(satisfaction >= 8) / COUNT | >70% | ~10% |
 
 ### Financial
 | KPI | Formula | Target |
@@ -261,6 +261,6 @@ See documentation files:
 
 ---
 
-**Last Updated:** March 20, 2026
+**Last Updated:** May 11, 2026
 **Data Format:** CSV (expandable to database)
-**Sample Size:** 5,000+ patient visits
+**Sample Size:** 5,000 patient visits
