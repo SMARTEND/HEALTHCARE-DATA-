@@ -7,6 +7,11 @@ __version__ = '3.0.0'
 __author__ = 'Mohammad Alshehri'
 
 from .analytics import HealthcareDataLoader, KPICalculator
+from .appointment_analytics import (
+    AppointmentDataLoader,
+    AppointmentKPICalculator,
+    export_appointment_summaries
+)
 from .visualization import AdvancedVisualizer, StatisticalAnalysis
 from .machine_learning import (
     SeasonalityAnalyzer,
@@ -44,6 +49,9 @@ __all__ = [
     # Core Analytics
     'HealthcareDataLoader',
     'KPICalculator',
+    'AppointmentDataLoader',
+    'AppointmentKPICalculator',
+    'export_appointment_summaries',
     
     # Visualization
     'AdvancedVisualizer',

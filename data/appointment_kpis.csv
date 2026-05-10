@@ -1,0 +1,2 @@
+total_appointments,completed_appointments,no_show_appointments,cancelled_appointments,completion_rate_pct,no_show_rate_pct,cancellation_rate_pct,sms_reminder_rate_pct,avg_patient_age,avg_wait_time_min,avg_service_duration_min,avg_los_days,avg_referral_delay_days,appointment_start_date,appointment_end_date
+100000,79999,14972,5029,80.0,14.97,5.03,70.2,45.08,17.5,30.0,1.56,7.0,2025-01-01,2025-12-31

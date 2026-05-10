@@ -10,7 +10,7 @@
 
 This project analyzes **healthcare operational performance** using data analytics techniques to identify efficiency patterns, operational bottlenecks, and improvement opportunities. The analysis focuses on patient flow metrics — including **waiting time**, **length of stay (LOS)**, and **referral delays** — across multiple clinical departments.
 
-A synthetic dataset of **5,000 patient visits** was used to simulate real-world healthcare operations. Tools included Microsoft Excel, pivot analysis, dashboard visualization, and AI-assisted insights generation.
+A synthetic dataset of **5,000 patient visits** was used to simulate real-world healthcare operations. The project also includes an appointment scheduling analytics layer built from a **100,000-row Excel appointment workbook**, published as aggregate CSV summaries instead of raw row-level appointment data. Tools included Microsoft Excel, pivot analysis, dashboard visualization, and AI-assisted insights generation.
 
 ---
 
@@ -57,6 +57,8 @@ A synthetic dataset of **5,000 patient visits** was used to simulate real-world 
 
 ## 📊 Key Performance Indicators (KPIs)
 
+### Patient Visit Operations
+
 | KPI | Value |
 |---|---|
 | ⏱️ Average Wait Time | **39.32 minutes** |
@@ -65,6 +67,21 @@ A synthetic dataset of **5,000 patient visits** was used to simulate real-world 
 | 📋 Average Referral Delay | **4.10 days** |
 
 These KPI values are calculated from the tracked synthetic dataset in `data/patient_visits.csv`, generated with the fixed seed in `src/generate_data.py`.
+
+### Appointment Scheduling
+
+| KPI | Value |
+|---|---|
+| Total Appointments | **100,000** |
+| Completion Rate | **80.00%** |
+| No-Show Rate | **14.97%** |
+| Cancellation Rate | **5.03%** |
+| Average Wait Time | **17.50 minutes** |
+| Average Service Duration | **30.00 minutes** |
+| Average Referral Delay | **7.00 days** |
+| SMS Reminder Rate | **70.20%** |
+
+Appointment KPIs are derived from `Healthcare Appointments.xlsx` and stored as aggregate outputs in `data/appointment_*.csv`.
 
 ---
 
@@ -77,7 +94,8 @@ The project followed a structured analytical workflow:
 3. **Department-Level Analysis** — Comparative analysis across ED, IM, OBGYN, OPD, PED, SURG
 4. **Monthly Trend Analysis** — Tracking operational metrics across all 12 months of 2025
 5. **Dashboard Visualization** — Executive-level interactive dashboard
-6. **AI-Assisted Interpretation** — Using AI to surface actionable insights
+6. **Appointment Scheduling Analysis** — Calculating completion, no-show, cancellation, reminder, and wait-time metrics
+7. **AI-Assisted Interpretation** — Using AI to surface actionable insights
 
 ---
 
@@ -102,6 +120,27 @@ The query above compares departments using:
 - average referral delay
 
 This step demonstrates how raw healthcare visit data can be transformed into actionable operational insights using SQL.
+
+## Appointment Analytics Layer
+
+The appointment analytics layer processes Excel or CSV appointment scheduling exports with these fields:
+- appointment status and type
+- department
+- appointment date, month, weekday, and hour
+- SMS reminder flag
+- wait time, service duration, LOS, and referral delay
+
+This layer produces privacy-conscious aggregate outputs:
+- `data/appointment_kpis.csv`
+- `data/appointment_status_summary.csv`
+- `data/appointment_department_summary.csv`
+- `data/appointment_monthly_summary.csv`
+
+The raw workbook is intentionally not committed to the repository. Regenerate the summaries from a local workbook path with:
+
+```bash
+python appointment_analysis_example.py "path/to/Healthcare Appointments.xlsx" --sheet-name "healthcare_db healthcare_large_" --output-dir data
+```
 
 ## 📈 Key Findings
 
@@ -133,6 +172,10 @@ All README screenshots are stored in `screenshots/` so image links render consis
 **Monthly Performance Trends**
 
 ![Monthly Trend Analysis](screenshots/trend_pivot.png)
+
+**Appointment Status Distribution**
+
+![Appointment Status Distribution](screenshots/appointment_status_distribution.png)
 
 ---
 
@@ -175,7 +218,12 @@ All README screenshots are stored in `screenshots/` so image links render consis
    python example_analysis.py
    ```
 
-4. **Run Machine Learning Pipeline:**
+4. **Regenerate Appointment Summary Outputs:**
+   ```bash
+   python appointment_analysis_example.py "path/to/Healthcare Appointments.xlsx" --sheet-name "healthcare_db healthcare_large_" --output-dir data
+   ```
+
+5. **Run Machine Learning Pipeline:**
    ```bash
    # Train predictive models
    python ml_pipeline_example.py
@@ -184,13 +232,13 @@ All README screenshots are stored in `screenshots/` so image links render consis
    python ml_use_cases.py
    ```
 
-5. **Comprehensive Financial & Clinical Analysis:**
+6. **Comprehensive Financial & Clinical Analysis:**
    ```bash
    # Run expanded analytics with all metrics
    python expanded_analytics_example.py
    ```
 
-6. **Automated Reporting & Scheduling:**
+7. **Automated Reporting & Scheduling:**
    ```bash
    # Run complete automation example
    python automation_example.py
@@ -203,13 +251,13 @@ All README screenshots are stored in `screenshots/` so image links render consis
    - Job scheduling configuration
    - Report scheduling setup
 
-7. **Run Quality Checks:**
+8. **Run Quality Checks:**
    ```bash
    python -m compileall -q .
    python -m pytest -q
    ```
 
-8. **Explore with Jupyter:**
+9. **Explore with Jupyter:**
    ```bash
    jupyter notebook
    ```
@@ -218,6 +266,7 @@ All README screenshots are stored in `screenshots/` so image links render consis
 ```
 src/
 ├── analytics.py             # Core KPI calculations
+├── appointment_analytics.py # Appointment scheduling analytics
 ├── visualization.py         # Advanced visualizations
 ├── machine_learning.py      # ML models & forecasting
 ├── financial_analytics.py   # Cost & ROI analysis
@@ -231,7 +280,11 @@ sql/
 └── schema.sql               # Expanded database schema
 
 data/
-└── patient_visits.csv       # Deterministic synthetic sample dataset
+├── patient_visits.csv       # Deterministic synthetic sample dataset
+├── appointment_kpis.csv     # Aggregate appointment KPI outputs
+├── appointment_status_summary.csv
+├── appointment_department_summary.csv
+└── appointment_monthly_summary.csv
 
 screenshots/
 ├── appointment_status_distribution.png # Appointment status chart
@@ -242,6 +295,7 @@ screenshots/
 
 tests/
 ├── conftest.py              # Test import path setup
+├── test_appointment_analytics.py # Appointment analytics tests
 └── test_analytics_pipeline.py # Data generation, KPI, and ETL tests
 
 docs/
@@ -254,6 +308,7 @@ docs/
 config.yaml                  # Job & automation configuration (NEW!)
 requirements.txt            # Python dependencies
 requirements-dev.txt        # Test and lint dependencies
+appointment_analysis_example.py # Appointment workbook analysis demo
 example_analysis.py          # Statistics & visualization demo
 ml_pipeline_example.py       # ML models & predictions demo
 ml_use_cases.py              # Real-world ML scenarios
@@ -298,6 +353,12 @@ automation_example.py        # Complete automation workflow demo (NEW!)
 - Trend analysis with rolling averages
 - Distribution plots & box plots
 - Heatmaps & correlation matrices
+
+✅ **Appointment Scheduling Analytics**
+- Excel/CSV appointment export loading
+- Completion, no-show, cancellation, and SMS reminder KPIs
+- Department, monthly, and status-level aggregate summaries
+- Raw workbook kept local while aggregate outputs are tracked
 
 ✅ **Data Pipeline Automation** (NEW!)
 - **ETL Framework**: Extract, validate, transform, load workflows

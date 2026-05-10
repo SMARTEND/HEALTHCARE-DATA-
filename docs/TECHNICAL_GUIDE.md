@@ -8,19 +8,22 @@ This project has been enhanced to support advanced analytics capabilities using 
 HEALTHCARE-DATA-/
 ├── src/                          # Python analytics modules
 │   ├── analytics.py             # Core KPI calculations & data loading
+│   ├── appointment_analytics.py # Appointment scheduling analytics
 │   ├── visualization.py         # Advanced visualizations & statistical analysis
 │   ├── generate_data.py         # Synthetic data generation
 │   └── __init__.py
 ├── sql/                          # Database schemas
 │   └── schema.sql               # SQL DDL for healthcare database
 ├── data/                         # Data storage
-│   └── patient_visits.csv       # Sample dataset
+│   ├── patient_visits.csv       # Sample visit dataset
+│   └── appointment_*.csv        # Aggregate appointment summaries
 ├── screenshots/                   # README image assets
 ├── tests/                         # Pytest coverage for core workflows
 ├── reports/                      # Generated reports
 ├── requirements.txt              # Python dependencies
 ├── requirements-dev.txt          # Test and lint dependencies
-├── example_analysis.py           # Example usage script
+├── example_analysis.py           # Visit analytics example script
+├── appointment_analysis_example.py # Appointment analytics example script
 └── README.md                     # Project documentation
 ```
 
@@ -66,6 +69,20 @@ This demonstrates:
 - Anomaly detection
 - Time series forecasting
 
+### 4. Regenerate Appointment Summaries
+
+The raw appointment workbook should stay local. Generate tracked aggregate summaries from an Excel or CSV export:
+
+```bash
+python appointment_analysis_example.py "path/to/Healthcare Appointments.xlsx" --sheet-name "healthcare_db healthcare_large_" --output-dir data
+```
+
+This creates:
+- `data/appointment_kpis.csv`
+- `data/appointment_status_summary.csv`
+- `data/appointment_department_summary.csv`
+- `data/appointment_monthly_summary.csv`
+
 ## Core Modules
 
 ### analytics.py
@@ -79,6 +96,20 @@ This demonstrates:
 - `calculate_los_stats(df)` - Length of stay analysis
 - `department_performance(df, metric)` - Compare departments
 - `monthly_trends(df, metric)` - Track trends over time
+
+### appointment_analytics.py
+
+**AppointmentDataLoader**
+- `load()` - Load appointment exports from Excel or CSV and normalize fields
+
+**AppointmentKPICalculator**
+- `summary_kpis(df)` - Overall completion, no-show, cancellation, reminder, wait-time, service-duration, LOS, and referral-delay KPIs
+- `status_summary(df)` - Appointment outcome distribution
+- `department_summary(df)` - Department-level scheduling performance
+- `monthly_summary(df)` - Month-level scheduling trend summary
+
+**Export Helper**
+- `export_appointment_summaries(df, output_dir)` - Write aggregate appointment summary CSVs
 
 ### visualization.py
 

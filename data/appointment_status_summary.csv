@@ -1,0 +1,4 @@
+status_category,status,appointments,appointment_pct
+completed,Completed,79999,80.0
+no_show,No-Show,14972,14.97
+cancelled,Cancelled,5029,5.03

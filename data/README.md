@@ -22,6 +22,13 @@ Core fields include:
 
 See `docs/DATA_DICTIONARY.md` for the full field reference.
 
+- **appointment_kpis.csv** - One-row aggregate appointment scheduling KPI summary derived from the local `Healthcare Appointments.xlsx` workbook.
+- **appointment_status_summary.csv** - Appointment counts and percentages by normalized status.
+- **appointment_department_summary.csv** - Department-level appointment volume, completion, no-show, cancellation, reminder, wait-time, service-duration, LOS, and referral-delay metrics.
+- **appointment_monthly_summary.csv** - Month-level appointment scheduling trends across 2025.
+
+The raw appointment workbook is not tracked in Git. These files keep the project reproducible while avoiding publication of row-level appointment records.
+
 ## Generation
 
 To regenerate sample data:
@@ -31,6 +38,12 @@ python src/generate_data.py
 ```
 
 Regenerating the file should produce the same data unless the generator logic or random seed changes.
+
+To regenerate the appointment aggregate outputs from a local workbook:
+
+```bash
+python appointment_analysis_example.py "path/to/Healthcare Appointments.xlsx" --sheet-name "healthcare_db healthcare_large_" --output-dir data
+```
 
 ## Data Privacy
 

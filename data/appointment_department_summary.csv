@@ -1,0 +1,5 @@
+department,appointments,completed,no_show,cancelled,avg_patient_age,avg_wait_time_min,avg_service_duration_min,avg_los_days,avg_referral_delay_days,sms_reminder_rate_pct,completion_rate_pct,no_show_rate_pct,cancellation_rate_pct
+Cardiology,24959,20007,3692,1260,45.2,17.52,29.96,1.56,6.98,70.41,80.16,14.79,5.05
+Family Medicine,25101,20152,3715,1234,44.88,17.48,29.97,1.57,7.01,70.07,80.28,14.8,4.92
+Internal Medicine,24843,19854,3713,1276,45.43,17.48,30.01,1.54,6.99,70.27,79.92,14.95,5.14
+Pediatrics,25097,19986,3852,1259,44.82,17.52,30.06,1.55,7.01,70.04,79.64,15.35,5.02

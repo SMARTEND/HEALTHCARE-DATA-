@@ -41,10 +41,12 @@ wheels/
 # Jupyter Notebook
 .ipynb_checkpoints
 *.ipynb
+.pytest_tmp/
 
 # Data files (keep sample for reference)
 *.csv
 !data/patient_visits.csv
+!data/appointment_*.csv
 *.xlsx
 *.db
 *.sqlite

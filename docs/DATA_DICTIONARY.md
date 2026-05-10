@@ -6,6 +6,8 @@ Complete reference to all data fields and metrics in the Healthcare Analytics sy
 
 The tracked CSV dataset includes 36 operational, financial, clinical quality, and patient safety fields across 5,000 synthetic patient visits. The SQL schema supports additional optional timestamp and workflow fields for database-backed implementations.
 
+The project also includes aggregate appointment scheduling outputs derived from `Healthcare Appointments.xlsx`. The raw appointment workbook is kept local; only summary CSVs are tracked in `data/appointment_*.csv`.
+
 ## Patient Operational Metrics
 
 ### Basic Visit Information
@@ -170,6 +172,51 @@ The tracked CSV dataset includes 36 operational, financial, clinical quality, an
 | Nursing Hours/Visit | AVG(nurse_hours) | Staffing workload |
 | Physician Hours/Visit | AVG(physician_hours) | Provider productivity |
 | Bed Hours/Visit | SUM(bed_hours) | Used for capacity planning |
+
+## Appointment Scheduling Dataset
+
+### Source Fields
+| Field | Type | Description | Notes |
+|-------|------|-------------|-------|
+| `appointment_id` | Integer | Unique appointment record identifier | Row-level source only |
+| `patient_age` | Integer | Patient age at appointment | Aggregated only in tracked outputs |
+| `department` | String | Scheduling department | Cardiology, Family Medicine, Internal Medicine, Pediatrics |
+| `appointment_type` | String | Appointment category | New, Follow-up, Urgent |
+| `arrival_time` | DateTime | Patient arrival timestamp | Local workbook source |
+| `service_start_time` | Time | Service start time | Local workbook source |
+| `service_end_time` | Time | Service end time | Local workbook source |
+| `status` | String | Appointment outcome | Completed, No-Show, Cancelled |
+| `sms_reminder_sent` | Integer | SMS reminder flag | 1 = sent, 0 = not sent |
+| `appointment_date` | Date | Scheduled appointment date | 2025-01-01 to 2025-12-31 |
+| `month` | String | Appointment month | YYYY-MM |
+| `weekday` | String | Appointment weekday | Monday-Sunday |
+| `hour` | Integer | Appointment hour | 0-23 |
+| `age_group` | String | Patient age band | Workbook-defined |
+| `service_duration_min` | Decimal | Service duration | Minutes |
+| `completed_flag` | Integer | Completed appointment flag | 1 = completed, 0 = not completed |
+| `wait_time_min` | Decimal | Arrival-to-service wait time | Minutes |
+| `los_days` | Decimal | Length of stay metric | Days |
+| `referral_delay_days` | Integer | Referral-to-appointment delay | Days |
+
+### Appointment KPIs
+| KPI | Formula | Current |
+|-----|---------|---------|
+| Total Appointments | COUNT(appointment_id) | 100,000 |
+| Completion Rate | Completed / Total | 80.00% |
+| No-Show Rate | No-Show / Total | 14.97% |
+| Cancellation Rate | Cancelled / Total | 5.03% |
+| SMS Reminder Rate | AVG(sms_reminder_sent) | 70.20% |
+| Avg Wait Time | AVG(wait_time_min) | 17.50 min |
+| Avg Service Duration | AVG(service_duration_min) | 30.00 min |
+| Avg Referral Delay | AVG(referral_delay_days) | 7.00 days |
+
+### Tracked Aggregate Outputs
+| File | Grain | Purpose |
+|------|-------|---------|
+| `data/appointment_kpis.csv` | Overall | Executive scheduling KPI summary |
+| `data/appointment_status_summary.csv` | Status | Outcome distribution |
+| `data/appointment_department_summary.csv` | Department | Department performance comparison |
+| `data/appointment_monthly_summary.csv` | Month | Monthly scheduling trend analysis |
 
 ## Derived Metrics
 
