@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-labelledby="title desc">
+  <title id="title">Appointment Status Distribution</title>
+  <desc id="desc">Tableau-style bar chart showing appointment counts by status: Cancelled 52, Completed 779, and No-Show 169.</desc>
+  <rect width="1000" height="520" fill="#ffffff"/>
+  <text x="500" y="58" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" font-style="italic" fill="#222222">APPOINTMENT STATUS DISTRIBUTION</text>
+  <text x="500" y="90" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#222222">status</text>
+
+  <g stroke="#eeeeee" stroke-width="1">
+    <line x1="120" y1="430" x2="920" y2="430"/>
+    <line x1="120" y1="388" x2="920" y2="388"/>
+    <line x1="120" y1="346" x2="920" y2="346"/>
+    <line x1="120" y1="304" x2="920" y2="304"/>
+    <line x1="120" y1="262" x2="920" y2="262"/>
+    <line x1="120" y1="220" x2="920" y2="220"/>
+    <line x1="120" y1="178" x2="920" y2="178"/>
+    <line x1="120" y1="136" x2="920" y2="136"/>
+    <line x1="120" y1="94" x2="920" y2="94"/>
+  </g>
+  <line x1="120" y1="430" x2="920" y2="430" stroke="#dddddd"/>
+  <line x1="120" y1="94" x2="120" y2="430" stroke="#eeeeee"/>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#6c737c" text-anchor="end">
+    <text x="112" y="434">0</text>
+    <text x="112" y="392">100</text>
+    <text x="112" y="350">200</text>
+    <text x="112" y="308">300</text>
+    <text x="112" y="266">400</text>
+    <text x="112" y="224">500</text>
+    <text x="112" y="182">600</text>
+    <text x="112" y="140">700</text>
+    <text x="112" y="98">800</text>
+  </g>
+
+  <g>
+    <rect x="229" y="408" width="70" height="22" fill="#4e79a7"/>
+    <rect x="409" y="103" width="230" height="327" fill="#f28e2b"/>
+    <rect x="767" y="359" width="70" height="71" fill="#e15759"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#333333" text-anchor="middle">
+    <text x="264" y="402">52</text>
+    <text x="524" y="96">779</text>
+    <text x="802" y="352">169</text>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#6c737c" text-anchor="middle">
+    <text x="264" y="468">Cancelled</text>
+    <text x="524" y="468">Completed</text>
+    <text x="802" y="468">No-Show</text>
+  </g>
+
+  <text x="62" y="272" transform="rotate(-90 62 272)" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#222222">Count of appointment_id</text>
+</svg>
