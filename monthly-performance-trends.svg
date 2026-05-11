@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="720" viewBox="0 0 1100 720" role="img" aria-labelledby="title desc">
+  <title id="title">Monthly Performance Trends</title>
+  <desc id="desc">Monthly pivot summary and line chart comparing average length of stay and average wait time.</desc>
+  <rect width="1100" height="720" fill="#ffffff"/>
+  <text x="52" y="62" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#163366">Monthly Performance Trends</text>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle">
+    <rect x="46" y="98" width="442" height="304" fill="#ffffff" stroke="#000000"/>
+    <rect x="46" y="98" width="442" height="20" fill="#bfe4ef" stroke="#000000"/>
+    <line x1="157" y1="98" x2="157" y2="402" stroke="#000000"/>
+    <line x1="319" y1="98" x2="319" y2="402" stroke="#000000"/>
+    <text x="101" y="113" font-weight="700">Month</text>
+    <text x="238" y="113" font-weight="700">Avg LOS min</text>
+    <text x="404" y="113" font-weight="700">Avg wait min</text>
+
+    <g stroke="#000000">
+      <line x1="46" y1="138" x2="488" y2="138"/>
+      <line x1="46" y1="158" x2="488" y2="158"/>
+      <line x1="46" y1="178" x2="488" y2="178"/>
+      <line x1="46" y1="198" x2="488" y2="198"/>
+      <line x1="46" y1="218" x2="488" y2="218"/>
+      <line x1="46" y1="238" x2="488" y2="238"/>
+      <line x1="46" y1="258" x2="488" y2="258"/>
+      <line x1="46" y1="278" x2="488" y2="278"/>
+      <line x1="46" y1="298" x2="488" y2="298"/>
+      <line x1="46" y1="318" x2="488" y2="318"/>
+      <line x1="46" y1="338" x2="488" y2="338"/>
+      <line x1="46" y1="358" x2="488" y2="358"/>
+      <line x1="46" y1="380" x2="488" y2="380"/>
+    </g>
+
+    <g font-weight="700">
+      <text x="101" y="133">2024-12</text><text x="238" y="133">153.60</text><text x="404" y="133">38.84</text>
+      <text x="101" y="153">2025-01</text><text x="238" y="153">181.73</text><text x="404" y="153">39.93</text>
+      <text x="101" y="173">2025-02</text><text x="238" y="173">181.35</text><text x="404" y="173">40.42</text>
+      <text x="101" y="193">2025-03</text><text x="238" y="193">179.26</text><text x="404" y="193">39.77</text>
+      <text x="101" y="213">2025-04</text><text x="238" y="213">180.18</text><text x="404" y="213">39.86</text>
+      <text x="101" y="233">2025-05</text><text x="238" y="233">183.60</text><text x="404" y="233">40.39</text>
+      <text x="101" y="253">2025-06</text><text x="238" y="253">181.49</text><text x="404" y="253">39.71</text>
+      <text x="101" y="273">2025-07</text><text x="238" y="273">180.67</text><text x="404" y="273">39.90</text>
+      <text x="101" y="293">2025-08</text><text x="238" y="293">179.84</text><text x="404" y="293">39.95</text>
+      <text x="101" y="313">2025-09</text><text x="238" y="313">181.49</text><text x="404" y="313">40.39</text>
+      <text x="101" y="333">2025-10</text><text x="238" y="333">180.13</text><text x="404" y="333">39.96</text>
+      <text x="101" y="353">2025-11</text><text x="238" y="353">180.46</text><text x="404" y="353">39.94</text>
+      <text x="101" y="373">2025-12</text><text x="238" y="373">181.52</text><text x="404" y="373">40.20</text>
+    </g>
+    <rect x="46" y="380" width="442" height="22" fill="#bfe4ef" stroke="#000000"/>
+    <text x="101" y="397" font-weight="700">Grand Total</text>
+    <text x="238" y="397" font-weight="700">180.95</text>
+    <text x="404" y="397" font-weight="700">40.03</text>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" text-anchor="middle">
+    <rect x="581" y="98" width="282" height="264" fill="#ffffff" stroke="#000000"/>
+    <rect x="581" y="98" width="282" height="20" fill="#183766" stroke="#000000"/>
+    <line x1="675" y1="98" x2="675" y2="362" stroke="#000000"/>
+    <line x1="769" y1="98" x2="769" y2="362" stroke="#000000"/>
+    <text x="628" y="113" fill="#ffffff" font-weight="700">Month</text>
+    <text x="722" y="113" fill="#ffffff" font-weight="700">Avg LOS</text>
+    <text x="816" y="113" fill="#ffffff" font-weight="700">Avg Wait</text>
+    <g stroke="#000000">
+      <line x1="581" y1="138" x2="863" y2="138"/>
+      <line x1="581" y1="158" x2="863" y2="158"/>
+      <line x1="581" y1="178" x2="863" y2="178"/>
+      <line x1="581" y1="198" x2="863" y2="198"/>
+      <line x1="581" y1="218" x2="863" y2="218"/>
+      <line x1="581" y1="238" x2="863" y2="238"/>
+      <line x1="581" y1="258" x2="863" y2="258"/>
+      <line x1="581" y1="278" x2="863" y2="278"/>
+      <line x1="581" y1="298" x2="863" y2="298"/>
+      <line x1="581" y1="318" x2="863" y2="318"/>
+      <line x1="581" y1="338" x2="863" y2="338"/>
+    </g>
+    <g font-weight="700">
+      <text x="628" y="133">2025-01</text><text x="722" y="133">181.73</text><text x="816" y="133">39.93</text>
+      <text x="628" y="153">2025-02</text><text x="722" y="153">181.35</text><text x="816" y="153">40.42</text>
+      <text x="628" y="173">2025-03</text><text x="722" y="173">179.26</text><text x="816" y="173">39.77</text>
+      <text x="628" y="193">2025-04</text><text x="722" y="193">180.18</text><text x="816" y="193">39.86</text>
+      <text x="628" y="213">2025-05</text><text x="722" y="213">183.60</text><text x="816" y="213">40.39</text>
+      <text x="628" y="233">2025-06</text><text x="722" y="233">181.49</text><text x="816" y="233">39.71</text>
+      <text x="628" y="253">2025-07</text><text x="722" y="253">180.67</text><text x="816" y="253">39.90</text>
+      <text x="628" y="273">2025-08</text><text x="722" y="273">179.84</text><text x="816" y="273">39.95</text>
+      <text x="628" y="293">2025-09</text><text x="722" y="293">181.49</text><text x="816" y="293">40.39</text>
+      <text x="628" y="313">2025-10</text><text x="722" y="313">180.13</text><text x="816" y="313">39.96</text>
+      <text x="628" y="333">2025-11</text><text x="722" y="333">180.46</text><text x="816" y="333">39.94</text>
+      <text x="628" y="353">2025-12</text><text x="722" y="353">181.52</text><text x="816" y="353">40.20</text>
+    </g>
+  </g>
+
+  <rect x="75" y="421" width="975" height="261" fill="#ffffff" stroke="#d6d6d6"/>
+  <text x="562" y="470" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" fill="#163366" text-anchor="middle">Monthly Performance Trends</text>
+
+  <g stroke="#d9d9d9" stroke-width="1">
+    <line x1="138" y1="580" x2="880" y2="580"/>
+    <line x1="138" y1="559" x2="880" y2="559"/>
+    <line x1="138" y1="538" x2="880" y2="538"/>
+    <line x1="138" y1="517" x2="880" y2="517"/>
+    <line x1="138" y1="496" x2="880" y2="496"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#000000">
+    <text x="84" y="583">177.00</text>
+    <text x="84" y="562">178.00</text>
+    <text x="84" y="541">179.00</text>
+    <text x="84" y="520">180.00</text>
+    <text x="84" y="499">181.00</text>
+
+    <text x="893" y="583">39.20</text>
+    <text x="893" y="562">39.40</text>
+    <text x="893" y="541">39.60</text>
+    <text x="893" y="520">39.80</text>
+    <text x="893" y="499">40.00</text>
+    <text x="893" y="478">40.20</text>
+  </g>
+
+  <polyline fill="none" stroke="#1f78b4" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" points="168,472 230,481 292,528 354,507 416,443 478,477 540,496 602,515 664,477 726,509 788,501 850,477"/>
+  <polyline fill="none" stroke="#df2a2a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round" points="168,497 230,441 292,515 354,505 416,444 478,522 540,500 602,494 664,444 726,493 788,495 850,466"/>
+
+  <g fill="#1f78b4">
+    <circle cx="168" cy="472" r="5"/><circle cx="230" cy="481" r="5"/><circle cx="292" cy="528" r="5"/><circle cx="354" cy="507" r="5"/><circle cx="416" cy="443" r="5"/><circle cx="478" cy="477" r="5"/><circle cx="540" cy="496" r="5"/><circle cx="602" cy="515" r="5"/><circle cx="664" cy="477" r="5"/><circle cx="726" cy="509" r="5"/><circle cx="788" cy="501" r="5"/><circle cx="850" cy="477" r="5"/>
+  </g>
+  <g fill="#df2a2a">
+    <circle cx="168" cy="497" r="5"/><circle cx="230" cy="441" r="5"/><circle cx="292" cy="515" r="5"/><circle cx="354" cy="505" r="5"/><circle cx="416" cy="444" r="5"/><circle cx="478" cy="522" r="5"/><circle cx="540" cy="500" r="5"/><circle cx="602" cy="494" r="5"/><circle cx="664" cy="444" r="5"/><circle cx="726" cy="493" r="5"/><circle cx="788" cy="495" r="5"/><circle cx="850" cy="466" r="5"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#000000" text-anchor="middle">
+    <text x="168" y="669">2025-01</text><text x="230" y="669">2025-02</text><text x="292" y="669">2025-03</text><text x="354" y="669">2025-04</text>
+    <text x="416" y="669">2025-05</text><text x="478" y="669">2025-06</text><text x="540" y="669">2025-07</text><text x="602" y="669">2025-08</text>
+    <text x="664" y="669">2025-09</text><text x="726" y="669">2025-10</text><text x="788" y="669">2025-11</text><text x="850" y="669">2025-12</text>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">
+    <line x1="936" y1="563" x2="974" y2="563" stroke="#1f78b4" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="955" cy="563" r="5" fill="#1f78b4"/>
+    <text x="981" y="568" fill="#222222">Average LOS</text>
+    <line x1="936" y1="601" x2="974" y2="601" stroke="#df2a2a" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="955" cy="601" r="5" fill="#df2a2a"/>
+    <text x="981" y="606" fill="#222222">Average Wait</text>
+  </g>
+</svg>
