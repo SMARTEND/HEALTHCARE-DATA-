@@ -45,6 +45,7 @@ wheels/
 # Data files (keep sample for reference)
 *.csv
 !data/patient_visits.csv
+!data/department_kpi_summary.csv
 *.xlsx
 *.db
 *.sqlite

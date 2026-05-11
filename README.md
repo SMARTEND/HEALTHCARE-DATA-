@@ -1,303 +1,227 @@
-# 🏥 Healthcare Operations Performance Analysis
+# Healthcare Operations Performance Analysis
 
-> Executive Analytics Portfolio Project — Generative AI Data Analyst Program
+Executive analytics portfolio project for healthcare operations, focused on patient flow, department performance, and monthly operational trends.
 
----
+## Overview
 
-## 📌 Overview
+This project analyzes healthcare operational performance using Excel, SQL, and Python. The analysis focuses on wait time, length of stay, patient visit volume, and referral delays across six clinical departments: ED, IM, OBGYN, OPD, PED, and SURG.
 
-This project analyzes **healthcare operational performance** using data analytics techniques to identify efficiency patterns, operational bottlenecks, and improvement opportunities. The analysis focuses on patient flow metrics — including **waiting time**, **length of stay (LOS)**, and **referral delays** — across multiple clinical departments.
+The core dataset is synthetic and contains 5,000 patient visits. It is intended for analytics practice, dashboard design, SQL aggregation, and AI-assisted interpretation. It must not be treated as real patient data.
 
-A synthetic dataset of **5,000 patient visits** was used to simulate real-world healthcare operations. Tools included Microsoft Excel, pivot analysis, dashboard visualization, and AI-assisted insights generation.
+## Project Context
 
----
-
-## 👥 Developers
-
-| Name | Role |
+| Field | Detail |
 |---|---|
-| **Mohammad Alshehri** | Prepare Data For Exploration |
+| Project Owner | Mohammad Alshehri |
+| Role | Prepare Data For Exploration |
+| Program | Generative AI Data Analyst, Vanderbilt University |
+| Field | Healthcare Data Analytics and AI |
+| Year | 2026 |
 
-**Program:** Generative AI Data Analyst — Vanderbilt University  
-**Field:** Healthcare Data Analytics & AI  
-**Year:** 2026
+## Dataset
 
----
+The project includes the source dashboard export at [data/healthcare visit.csv](data/healthcare%20visit.csv). This semicolon-delimited file is an Excel dashboard export that contains KPI card values and department-level metrics.
 
-## 🛠️ Tools & Technologies
+A cleaned department summary is also available at [data/department_kpi_summary.csv](data/department_kpi_summary.csv):
 
-### Initial Tools
-| Tool | Purpose |
+| Department | Wait Minutes | LOS Minutes |
+|---|---:|---:|
+| ED | 40.05 | 181.04 |
+| IM | 39.63 | 180.60 |
+| OBGYN | 40.19 | 179.94 |
+| OPD | 40.12 | 181.86 |
+| PED | 40.02 | 180.81 |
+| SURG | 40.15 | 181.43 |
+
+The full synthetic patient-level dataset can be generated with `python src/generate_data.py`, which creates `data/patient_visits.csv`.
+
+## Dashboard Outputs
+
+![Healthcare Operations Dashboard](dashboard.svg)
+
+![Monthly Performance Trends](monthly-performance-trends.svg)
+
+## SQL Analytics
+
+The SQL layer aggregates operational KPIs by department and supports department-level performance comparison.
+
+```sql
+SELECT
+    department,
+    COUNT(*) AS total_visits,
+    ROUND(AVG(wait_time_min), 2) AS avg_wait_time,
+    ROUND(AVG(los_min), 2) AS avg_los,
+    ROUND(AVG(referral_delay_days), 2) AS avg_referral_delay
+FROM patient_visits
+GROUP BY department
+ORDER BY avg_los DESC;
+```
+
+![SQL Analytics Output](sql-analytics-output.svg)
+
+SQL output highlights from the displayed Workbench result grid:
+
+| Department | Total Visits | Avg Wait Time | Avg LOS | Avg Referral Delay |
+|---|---:|---:|---:|---:|
+| SURG | 1 | 47.00 | 260.00 | 7.00 |
+| PED | 1 | 38.00 | 170.00 | 4.00 |
+| OPD | 1 | 50.00 | 120.00 | 6.00 |
+| OBGYN | 1 | 28.00 | 150.00 | 2.00 |
+| IM | 1 | 42.00 | 210.00 | 5.00 |
+| ED | 1 | 35.50 | 180.00 | 3.00 |
+
+## Tableau Visualizations
+
+These Tableau worksheets summarize the appointment sample by status and department.
+
+![Appointment Status Distribution](tableau-appointment-status-distribution.svg)
+
+![Total Appointments by Department](tableau-department-comparison.svg)
+
+Tableau summary values:
+
+| View | Main Result |
 |---|---|
-| **Microsoft Excel** | Data cleaning, KPI calculation, pivot analysis |
-| **Excel Dashboard** | Interactive visualization of KPIs |
-| **Pivot Tables** | Department & monthly trend analysis |
-| **AI (ChatGPT)** | Assisted interpretation of analytical findings |
+| Appointment Status Distribution | Completed: 779, No-Show: 169, Cancelled: 52 |
+| Total Appointments by Department | Cardiology: 258, Family Medicine: 255, Pediatrics: 244, Internal Medicine: 243 |
 
-### Enhanced Technical Stack ✨
-| Technology | Version | Purpose |
-|---|---|---|
-| **Python** | 3.8+ | Advanced data analysis & automation |
-| **Pandas** | 2.1.3 | Data manipulation & transformation |
-| **NumPy** | 1.24.3 | Numerical computing & statistics |
-| **Scikit-learn** | 1.3.2 | Machine learning & anomaly detection |
-| **Plotly** | 5.17.0 | Interactive web-based visualizations |
-| **Matplotlib/Seaborn** | 3.8.2/0.13.0 | Statistical plots & distributions |
-| **SQLAlchemy** | 2.0.23 | Database ORM & integration |
-| **Jupyter** | 1.0.0 | Interactive notebooks & exploration |
-| **APScheduler** | 3.10.4 | Advanced job scheduling & automation |
-| **Jinja2** | 3.1.2 | Dynamic report templating |
-| **PyYAML** | 6.0.1 | Configuration management |
-| **python-dotenv** | 1.0.0 | Environment variable management |
-
----
-
-## 📊 Key Performance Indicators (KPIs)
+## Key KPIs
 
 | KPI | Value |
+|---|---:|
+| Average Wait Time | 40.03 min |
+| Average Length of Stay | 180.95 min |
+| Total Patient Visits | 5,000 |
+| Average Referral Delay | 4.51 days |
+
+## Tools and Technologies
+
+| Tool | Purpose |
 |---|---|
-| ⏱️ Average Wait Time | **40.04 minutes** |
-| 🛏️ Average Length of Stay (LOS) | **181.10 minutes** |
-| 👥 Total Patient Visits | **5,000** |
-| 📋 Average Referral Delay | **4.51 days** |
+| Microsoft Excel | Data cleaning, KPI calculation, pivot tables, dashboard visualization |
+| MySQL Workbench | SQL query execution and result-grid validation |
+| Tableau | Appointment status and department comparison worksheets |
+| SQL | Department-level KPI aggregation and operational comparison |
+| Python | Advanced analytics, automation, visualization, and synthetic data generation |
+| Pandas and NumPy | Data manipulation and statistical calculations |
+| Plotly, Matplotlib, Seaborn | Interactive and static visualizations |
+| Scikit-learn | Machine learning examples and predictive modeling |
 
----
+## Advanced Capabilities
 
-## 🔬 Methodology
+- KPI aggregation and department-level operational comparison
+- Monthly trend analysis for wait time and length of stay
+- Statistical analysis, anomaly detection, and forecasting examples
+- Machine learning examples for wait time, length of stay, referral delay, and demand forecasting
+- Financial analytics for cost, revenue, profitability, and ROI scenarios
+- Clinical quality metrics for readmissions, adverse events, mortality, satisfaction, and risk stratification
+- ETL, reporting, scheduling, and automation examples
 
-The project followed a structured analytical workflow:
+## Methodology
 
-1. **Data Cleaning & Preparation** — Using Excel formulas to ensure data quality
-2. **KPI Calculation** — Creating calculated performance indicators
-3. **Department-Level Analysis** — Comparative analysis across ED, IM, OBGYN, OPD, PED, SURG
-4. **Monthly Trend Analysis** — Tracking operational metrics across all 12 months of 2025
-5. **Dashboard Visualization** — Executive-level interactive dashboard
-6. **AI-Assisted Interpretation** — Using AI to surface actionable insights
+1. Clean and prepare healthcare visit data.
+2. Calculate operational KPIs.
+3. Compare performance across departments.
+4. Analyze monthly trends for wait time and length of stay.
+5. Build executive-level dashboard visuals.
+6. Use AI-assisted interpretation to identify improvement opportunities.
 
----
-## SQL Analytics Layer
+## Key Findings
 
-To strengthen the analytical depth of the project, SQL was used to calculate and compare key operational performance indicators across departments.
+Average wait time is close to 40 minutes, with limited variation across departments. This suggests that patient intake is relatively balanced and that major delays are less likely to be concentrated at registration or triage.
 
-This layer supported:
-- KPI aggregation
-- department-level performance comparison
-- operational bottleneck identification
-- trend-oriented analysis for decision support
+Average length of stay is much higher than wait time, at roughly 181 minutes. This points to internal clinical workflow, diagnostics, care coordination, or discharge processes as likely throughput constraints.
 
-### Sample SQL Output
+Average referral delay is 4.51 days. Better referral tracking and follow-up workflows could reduce care-cycle delays and improve continuity of care.
 
-![SQL Output](screenshots/sql_output.png)
+Monthly trends show moderate movement in both wait time and length of stay, but no severe instability across 2025.
 
-The query above compares departments using:
-- total visits
-- average wait time
-- average LOS
-- average referral delay
+## Recommendations
 
-This step demonstrates how raw healthcare visit data can be transformed into actionable operational insights using SQL.
-## 📈 Key Findings
+1. Improve diagnostic turnaround and internal care coordination to reduce length of stay.
+2. Implement structured referral tracking to reduce referral delays.
+3. Monitor KPIs continuously through dashboards instead of relying only on periodic reports.
+4. Use predictive analytics to forecast demand, resource pressure, and possible bottlenecks.
 
-### Waiting Time
-The overall average wait time was ~40 minutes, with small variation across departments — suggesting a **balanced patient intake process** without significant congestion at triage or registration.
+## Quick Start
 
-### Length of Stay (LOS)
-At ~181 minutes, LOS is significantly higher than wait time, indicating that **primary throughput delays occur within internal clinical processes** rather than at access points.
+Install dependencies:
 
-### Referral Delay
-The average referral delay of ~4.5 days may contribute to prolonged patient management cycles and operational inefficiencies, affecting both outcomes and resource utilization.
-
-### Department Comparison
-Performance differences across departments were moderate with no single department showing extreme inefficiencies — suggesting **systemic rather than department-specific** challenges.
-
-### Monthly Trends
-Moderate fluctuations in wait time were observed through 2025, while LOS remained stable — indicating **consistent performance with minor seasonal variation**.
-
----
-
-
-
-## 💡 Recommendations
-
-1. **Optimize Internal Clinical Processes** — Reduce LOS by improving diagnostic turnaround and care coordination workflows
-2. **Enhance Referral Management** — Implement structured referral tracking to reduce delays and improve care continuity
-3. **Deploy Real-Time KPI Monitoring** — Use live dashboards for proactive operational decision-making
-4. **Leverage AI for Predictive Planning** — Forecast patient demand, resource utilization, and potential bottlenecks
-
----
-
-## 🚀 Getting Started with Advanced Analytics
-
-### Quick Start (Python)
-
-1. **Setup Environment:**
-   ```bash
-   # Create virtual environment
-   python -m venv .venv
-   
-   # Activate (Windows)
-   .venv\Scripts\activate
-   
-   # Install dependencies
-   pip install -r requirements.txt
-   ```
-
-2. **Generate Sample Data & Run Analysis:**
-   ```bash
-   # Basic statistical analysis
-   python example_analysis.py
-   ```
-
-3. **Run Machine Learning Pipeline:**
-   ```bash
-   # Train predictive models
-   python ml_pipeline_example.py
-   
-   # Explore use cases
-   python ml_use_cases.py
-   ```
-
-4. **Comprehensive Financial & Clinical Analysis:**
-   ```bash
-   # Run expanded analytics with all metrics
-   python expanded_analytics_example.py
-   ```
-
-5. **Automated Reporting & Scheduling:**
-   ```bash
-   # Run complete automation example
-   python automation_example.py
-   ```
-   
-   This will demonstrate:
-   - ETL pipeline execution
-   - Dynamic report generation
-   - Quality metrics calculation
-   - Job scheduling configuration
-   - Report scheduling setup
-
-6. **Explore with Jupyter:**
-   ```bash
-   jupyter notebook
-   ```
-
-### Project Structure
+```bash
+pip install -r requirements.txt
 ```
+
+Generate a full synthetic patient visit dataset:
+
+```bash
+python src/generate_data.py
+```
+
+Run the example analysis:
+
+```bash
+python example_analysis.py
+```
+
+Run the machine learning examples:
+
+```bash
+python ml_pipeline_example.py
+python ml_use_cases.py
+```
+
+Run the expanded analytics example:
+
+```bash
+python expanded_analytics_example.py
+```
+
+Run the automation workflow example:
+
+```bash
+python automation_example.py
+```
+
+## Project Structure
+
+```text
 src/
-├── analytics.py             # Core KPI calculations
-├── visualization.py         # Advanced visualizations
-├── machine_learning.py      # ML models & forecasting
-├── financial_analytics.py   # Cost & ROI analysis
-├── clinical_quality.py      # Quality & safety metrics
-├── etl_pipeline.py          # ETL orchestration & data validation
-├── reporting.py             # Dynamic report generation
-├── scheduler.py             # Job scheduling & automation
-└── generate_data.py         # Synthetic data generation
+  analytics.py              Core KPI calculations
+  visualization.py          Advanced visualizations
+  machine_learning.py       ML models and forecasting
+  financial_analytics.py    Cost and ROI analysis
+  clinical_quality.py       Quality and safety metrics
+  etl_pipeline.py           ETL orchestration and data validation
+  reporting.py              Dynamic report generation
+  scheduler.py              Job scheduling and automation
+  generate_data.py          Synthetic data generation
 
 sql/
-└── schema.sql               # Expanded database schema
+  schema.sql                Database schema and analytics layer
 
 data/
-└── patient_visits.csv       # Sample dataset
+  healthcare visit.csv      Excel dashboard export used for the KPI visuals
+  department_kpi_summary.csv Clean department KPI summary extracted from the dashboard export
+  patient_visits.csv        Generated synthetic dataset, created by src/generate_data.py
+
+tableau-appointment-status-distribution.svg
+tableau-department-comparison.svg
+sql-analytics-output.svg
 
 docs/
-├── TECHNICAL_GUIDE.md       # Technical documentation
-├── ML_GUIDE.md              # Machine learning reference
-├── DATA_DICTIONARY.md       # Complete field reference
-└── AUTOMATION_GUIDE.md      # Automation setup & configuration (NEW!)
-
-.env.example                 # Environment variable template (NEW!)
-config.yaml                  # Job & automation configuration (NEW!)
-example_analysis.py          # Statistics & visualization demo
-ml_pipeline_example.py       # ML models & predictions demo
-ml_use_cases.py              # Real-world ML scenarios
-expanded_analytics_example.py # Financial & clinical analysis demo
-automation_example.py        # Complete automation workflow demo (NEW!)
+  TECHNICAL_GUIDE.md
+  ML_GUIDE.md
+  DATA_DICTIONARY.md
+  AUTOMATION_GUIDE.md
 ```
 
-### Key Capabilities
+## Documentation
 
-✅ **Advanced Statistical Analysis**
-- Anomaly detection (Z-score)
-- Time series forecasting
-- Correlation analysis
-- Distribution analysis
+- [Technical Guide](docs/TECHNICAL_GUIDE.md)
+- [Machine Learning Guide](docs/ML_GUIDE.md)
+- [Data Dictionary](docs/DATA_DICTIONARY.md)
+- [Automation Guide](docs/AUTOMATION_GUIDE.md)
 
-✅ **Machine Learning Models** (Available)
-- **Wait Time Prediction**: Gradient Boosting per department
-- **Length of Stay Forecasting**: Random Forest ensembles
-- **Referral Delay Prediction**: Global pattern detection
-- **Patient Demand Forecast**: Monthly volume projections
-- **Seasonality Detection**: Autocorrelation analysis
+## License
 
-✅ **Financial Analytics**
-- Cost breakdown by component (direct, supply, lab, imaging, pharmacy)
-- Revenue analysis by insurance type
-- Profitability metrics and ROI calculations
-- Break-even analysis
-- Cost-effectiveness evaluation
-- Department profitability tracking
-
-✅ **Clinical Quality Metrics**
-- Readmission rate analysis (30-day)
-- Adverse event tracking
-- Mortality analysis by risk groups
-- Patient satisfaction assessment
-- Risk stratification (Low/Medium/High/Critical)
-- Clinical outcome trajectories
-- Comorbidity impact analysis
-
-✅ **Interactive Visualizations**
-- Department performance comparisons
-- Trend analysis with rolling averages
-- Distribution plots & box plots
-- Heatmaps & correlation matrices
-
-✅ **Data Pipeline Automation** (NEW!)
-- **ETL Framework**: Extract, validate, transform, load workflows
-- **Data Quality Checks**: Automated completeness, range, and category validation
-- **Report Generation**: Dynamic HTML/PDF reports with Jinja2 templates
-- **Job Scheduling**: APScheduler-based cron job orchestration
-- **Quality Monitoring**: Automated health checks and alert triggers
-- **Configuration Management**: YAML and environment-based configuration
-
-✅ **Scheduled Automation** (NEW!)
-- Daily ETL pipeline execution
-- Weekly/monthly report generation
-- Automated ML model retraining
-- Continuous quality metric calculation
-- Financial analysis automation
-- Execution history tracking & monitoring
-
-✅ **Expanded Data Dictionary**
-- 50+ data fields covering operations, finance, and clinical metrics
-- Realistic distributions and relationships
-- Risk scoring algorithms
-- Quality indicators framework
-
-✅ **Database Integration**
-- SQL schema for persistent storage
-- SQLAlchemy ORM for Python
-- Pre-built analytics views
-- Financial and quality reporting tables
-
-For detailed technical guide, see [TECHNICAL_GUIDE.md](docs/TECHNICAL_GUIDE.md)  
-For automation guide, see [AUTOMATION_GUIDE.md](docs/AUTOMATION_GUIDE.md)
-
----
-
-## ✅ Conclusion
-
-This project demonstrates how **data analytics combined with AI-assisted interpretation** can support healthcare operational decision-making. While patient access processes appear efficient, improvement opportunities exist within internal care workflows and referral coordination.
-
-The developed dashboard provides a **scalable framework** adaptable to real healthcare environments to improve efficiency, resource allocation, and patient experience.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
-
----
-
-> 💡 *"Better data = Faster decisions = Better healthcare."*
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="520" viewBox="0 0 820 520" role="img" aria-labelledby="title desc">
+  <title id="title">Healthcare Operations Dashboard</title>
+  <desc id="desc">Executive healthcare dashboard with four KPI cards and a department comparison chart.</desc>
+  <rect width="820" height="520" fill="#ffffff"/>
+  <text x="32" y="91" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#163366">Healthcare Operations Dashboard</text>
+
+  <g transform="translate(28 109)" font-family="Arial, Helvetica, sans-serif">
+    <rect x="0" y="0" width="205" height="154" fill="#e97824" stroke="#695b3b" stroke-width="1"/>
+    <rect x="205" y="0" width="204" height="154" fill="#263f80" stroke="#695b3b" stroke-width="1"/>
+    <rect x="409" y="0" width="205" height="154" fill="#96302f" stroke="#695b3b" stroke-width="1"/>
+    <rect x="614" y="0" width="151" height="154" fill="#80a83e" stroke="#695b3b" stroke-width="1"/>
+
+    <text x="40" y="67" font-size="12" font-weight="700" fill="#ffffff">Average Wait Time</text>
+    <text x="74" y="97" font-size="12" font-weight="700" fill="#ffffff">40.03 min</text>
+
+    <text x="248" y="67" font-size="12" font-weight="700" fill="#ffffff">Average Length of Stay</text>
+    <text x="276" y="97" font-size="12" font-weight="700" fill="#ffffff">180.95 min</text>
+
+    <text x="469" y="67" font-size="12" font-weight="700" fill="#ffffff">Total Patient Visits</text>
+    <text x="495" y="97" font-size="12" font-weight="700" fill="#ffffff">5,000</text>
+
+    <text x="645" y="67" font-size="12" font-weight="700" fill="#ffffff">Avg Referral Delay</text>
+    <text x="661" y="97" font-size="12" font-weight="700" fill="#ffffff">4.51 days</text>
+  </g>
+
+  <text x="410" y="288" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#163366">KPI by Department</text>
+  <rect x="28" y="296" width="765" height="209" fill="#ffffff" stroke="#d7d7d7"/>
+  <text x="410" y="310" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#111111">Avg Wait Time &amp; Length of Stay by Department</text>
+
+  <g stroke="#d9d9d9" stroke-width="1">
+    <line x1="55" y1="489" x2="735" y2="489"/>
+    <line x1="55" y1="472" x2="735" y2="472"/>
+    <line x1="55" y1="455" x2="735" y2="455"/>
+    <line x1="55" y1="438" x2="735" y2="438"/>
+    <line x1="55" y1="421" x2="735" y2="421"/>
+    <line x1="55" y1="404" x2="735" y2="404"/>
+    <line x1="55" y1="387" x2="735" y2="387"/>
+    <line x1="55" y1="370" x2="735" y2="370"/>
+    <line x1="55" y1="353" x2="735" y2="353"/>
+    <line x1="55" y1="336" x2="735" y2="336"/>
+    <line x1="55" y1="321" x2="735" y2="321"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="6" fill="#333333">
+    <text x="33" y="491">39.30</text>
+    <text x="33" y="474">39.40</text>
+    <text x="33" y="457">39.50</text>
+    <text x="33" y="440">39.60</text>
+    <text x="33" y="423">39.70</text>
+    <text x="33" y="406">39.80</text>
+    <text x="33" y="389">39.90</text>
+    <text x="33" y="372">40.00</text>
+    <text x="33" y="355">40.10</text>
+    <text x="33" y="338">40.20</text>
+    <text x="33" y="323">40.30</text>
+
+    <text x="724" y="491">170.50</text>
+    <text x="724" y="457">174.50</text>
+    <text x="724" y="423">178.50</text>
+    <text x="724" y="389">182.50</text>
+  </g>
+
+  <g>
+    <rect x="91" y="383" width="35" height="106" fill="#df2529"/>
+    <rect x="91" y="363" width="35" height="20" fill="#1f78b4"/>
+    <rect x="201" y="402" width="35" height="87" fill="#df2529"/>
+    <rect x="311" y="429" width="35" height="60" fill="#df2529"/>
+    <rect x="311" y="340" width="35" height="89" fill="#1f78b4"/>
+    <rect x="421" y="348" width="35" height="141" fill="#df2529"/>
+    <rect x="531" y="392" width="35" height="97" fill="#df2529"/>
+    <rect x="531" y="370" width="35" height="22" fill="#1f78b4"/>
+    <rect x="641" y="367" width="35" height="122" fill="#df2529"/>
+    <rect x="641" y="346" width="35" height="21" fill="#1f78b4"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="6" fill="#333333" text-anchor="middle">
+    <text x="109" y="499">ED</text>
+    <text x="219" y="499">IM</text>
+    <text x="329" y="499">OBGYN</text>
+    <text x="439" y="499">OPD</text>
+    <text x="549" y="499">PED</text>
+    <text x="659" y="499">SURG</text>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif" font-size="6" fill="#333333">
+    <rect x="745" y="405" width="6" height="6" fill="#1f78b4"/>
+    <text x="755" y="411">wait_minutes</text>
+    <rect x="745" y="418" width="6" height="6" fill="#df2529"/>
+    <text x="755" y="424">los_minutes</text>
+  </g>
+</svg>
