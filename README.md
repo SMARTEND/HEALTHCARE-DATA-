@@ -115,17 +115,7 @@ Moderate fluctuations in wait time were observed through 2025, while LOS remaine
 
 ---
 
-## 📸 Screenshots
 
-**Dashboard Overview**
-
-![Healthcare Operations Dashboard](screenshots/dashboard.png)
-
-**Monthly Performance Trends**
-
-![Monthly Trend Analysis](screenshots/trend_pivot.png)
-
----
 
 ## 💡 Recommendations
 
